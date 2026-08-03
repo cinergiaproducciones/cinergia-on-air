@@ -52,12 +52,12 @@
     .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
     .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.04)}
     .hero{
-      min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;
+      min-height:82vh;;display:grid;place-items:center;text-align:center;position:relative;
       background:
         radial-gradient(circle at 20% 18%,rgba(25,230,227,.14),transparent 24%),
         radial-gradient(circle at 80% 72%,rgba(239,39,185,.14),transparent 26%),
         linear-gradient(180deg,#070812,#0a0b17);
-      padding:140px 0 80px;
+      padding:110px 0 50px;
     }
     .hero:before{
       content:"";position:absolute;width:520px;height:520px;border-radius:50%;
@@ -70,18 +70,20 @@
       pointer-events:none;
     }
     .hero-wrap{position:relative;z-index:1;max-width:960px}
-    .hero-logo{
-      width:min(760px,88vw);margin:0 auto;
+   .hero-logo{
+      width:min(900px,92vw);
+      margin:0 auto;
       object-fit:contain;
       filter:drop-shadow(0 24px 60px rgba(0,0,0,.28));
+}
     }
     .onair-big{
       font-size:clamp(1rem,2.4vw,1.55rem);letter-spacing:.55em;
-      color:var(--cyan);font-weight:900;margin-left:.55em;margin-top:18px;
+      color:var(--cyan);font-weight:900;margin-left:.55em;margin-top:6px;
     }
     .tagline{
       font-size:clamp(2.2rem,6vw,5.6rem);line-height:1;letter-spacing:-.05em;
-      margin:38px auto 34px;max-width:820px;font-weight:780;
+      margin:20px auto 24px;max-width:820px;font-weight:780;
     }
     .points{
       display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
@@ -220,10 +222,24 @@
         <div class="tagline">Experiencias que se escuchan.</div>
 
         <div class="points">
-          <div class="point"><strong>3 canales</strong>de audio en simultáneo</div>
-          <div class="point"><strong>Hasta 100 metros</strong>de alcance de emisión y recepción</div>
-          <div class="point"><strong>Sonido HD</strong>con control de volumen individual</div>
-          <div class="point"><strong>8 a 10 horas</strong>de autonomía sin recarga</div>
+         <div class="point">
+    <strong>🎧 3 canales</strong><br>
+    en simultáneo
+</div>
+
+<div class="point">
+    <strong>📡 100 m</strong><br>
+    de alcance
+</div>
+
+<div class="point">
+    <strong>🎵 Sonido HiFi</strong>
+</div>
+
+<div class="point">
+    <strong>🔋 8 hs</strong><br>
+    de autonomía
+</div>
         </div>
 
         <a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20recibir%20una%20propuesta" target="_blank">Solicitar presupuesto</a>
