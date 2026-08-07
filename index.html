@@ -1,385 +1,575 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Cinergia On Air: experiencias que se escuchan. Auriculares inalámbricos para conferencias, traducción simultánea, silent events y recorridos guiados.">
-  <title>Cinergia On Air</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Cinergia On Air: auriculares inalámbricos para conferencias, traducción simultánea, silent events, recorridos guiados y experiencias inmersivas." name="description"/>
+<meta content="#070812" name="theme-color"/>
+<title>Cinergia On Air | Experiencias que se escuchan</title>
+<style>
     :root{
-      --cyan:#19e6e3;
-      --pink:#ef27b9;
-      --blue:#1698e5;
-      --deep:#1737b7;
-      --violet:#25075c;
-      --ink:#070812;
-      --panel:#111326;
-      --white:#fff;
-      --muted:#a9aec0;
-      --line:rgba(255,255,255,.12);
+      --cyan:#19e6e3;--pink:#ef27b9;--blue:#1698e5;--deep:#1737b7;
+      --violet:#25075c;--ink:#070812;--panel:#111326;--white:#fff;
+      --muted:#aeb3c5;--line:rgba(255,255,255,.13);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0;background:var(--ink);color:var(--white);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      overflow-x:hidden;
-    }
+    body{margin:0;background:var(--ink);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}
     a{text-decoration:none;color:inherit}
     img{display:block;width:100%}
     .container{width:min(1180px,calc(100% - 40px));margin:auto}
-    .nav{
-      position:fixed;inset:0 0 auto 0;z-index:50;
-      background:rgba(7,8,18,.72);backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
+
+    .nav{position:fixed;inset:0 0 auto;z-index:50;background:rgba(7,8,18,.78);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
     .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:13px}
-    .brand img{
-      width:138px;height:50px;object-fit:contain;
-      filter:drop-shadow(0 0 12px rgba(25,230,227,.10));
-    }
-    .brand span{font-size:.72rem;letter-spacing:.34em;color:var(--cyan);font-weight:800}
-    .nav-links{display:flex;align-items:center;gap:26px;color:#d5d7e1;font-size:.92rem}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:14px 22px;border-radius:999px;font-weight:800;
-      border:1px solid transparent;transition:.25s ease;
-    }
-    .btn-primary{
-      color:#070812;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--pink));
-    }
-    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08)}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand img{width:72px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(25,230,227,.18))}
+    .brand span{font-size:.72rem;letter-spacing:.42em;color:var(--cyan);font-weight:900}
+    .nav-links{display:flex;align-items:center;gap:27px;color:#d7d9e3;font-size:.94rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 23px;border-radius:999px;font-weight:850;border:1px solid transparent;transition:.25s ease}
+    .btn-primary{color:#070812;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--pink));box-shadow:0 12px 30px rgba(23,152,229,.16)}
+    .btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 16px 38px rgba(239,39,185,.22)}
     .btn-ghost{border-color:var(--line);background:rgba(255,255,255,.04)}
-    .hero{
-      min-height:82vh;;display:grid;place-items:center;text-align:center;position:relative;
-      background:
-        radial-gradient(circle at 20% 18%,rgba(25,230,227,.14),transparent 24%),
-        radial-gradient(circle at 80% 72%,rgba(239,39,185,.14),transparent 26%),
-        linear-gradient(180deg,#070812,#0a0b17);
-      padding:110px 0 50px;
-    }
-    .hero:before{
-      content:"";position:absolute;width:520px;height:520px;border-radius:50%;
-      background:radial-gradient(circle,rgba(23,55,183,.16),rgba(37,7,92,.08) 45%,transparent 70%);
-      filter:blur(12px);
-    }
-    .hero:after{
-      content:"";position:absolute;inset:auto 0 0 0;height:160px;
-      background:linear-gradient(to bottom,transparent,var(--ink));
-      pointer-events:none;
-    }
-    .hero-wrap{position:relative;z-index:1;max-width:960px}
-   .hero-logo{
-      width:min(900px,92vw);
-      margin:0 auto;
-      object-fit:contain;
-      filter:drop-shadow(0 24px 60px rgba(0,0,0,.28));
-}
-    }
-    .onair-big{
-      font-size:clamp(1rem,2.4vw,1.55rem);letter-spacing:.55em;
-      color:var(--cyan);font-weight:900;margin-left:.55em;margin-top:6px;
-    }
-    .tagline{
-      font-size:clamp(2.2rem,6vw,5.6rem);line-height:1;letter-spacing:-.05em;
-      margin:20px auto 24px;max-width:820px;font-weight:780;
-    }
-    .points{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-      margin:0 auto 38px;max-width:980px;
-    }
-    .point{
-      padding:20px 16px;border:1px solid var(--line);border-radius:20px;
-      background:rgba(255,255,255,.045);color:#e6e8f1;font-size:.94rem;
-    }
-    .point strong{display:block;color:var(--cyan);font-size:1.05rem;margin-bottom:6px}
+
+    .hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;padding:112px 0 56px;background:linear-gradient(rgba(7,8,18,.88),rgba(7,8,18,.92)),radial-gradient(circle at 17% 18%,rgba(25,230,227,.14),transparent 25%),radial-gradient(circle at 83% 72%,rgba(239,39,185,.16),transparent 28%),url("assets/hero.jpg") center/cover no-repeat}
+    .hero:before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(23,55,183,.17),rgba(37,7,92,.09) 45%,transparent 70%);filter:blur(14px)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:100px;background:linear-gradient(to bottom,transparent,var(--ink));pointer-events:none}
+    .hero-wrap{position:relative;z-index:1;max-width:1180px}
+    .hero-logo{width:min(470px,63vw);margin:0 auto;object-fit:contain;filter:drop-shadow(0 22px 52px rgba(0,0,0,.30))}
+    .onair-big{font-size:clamp(.92rem,1.8vw,1.32rem);letter-spacing:.58em;color:var(--cyan);font-weight:900;margin:.35rem 0 0 .58em}
+    .tagline{font-size:clamp(2.8rem,5.7vw,5.65rem);line-height:.96;letter-spacing:-.055em;margin:16px auto 24px;max-width:900px;font-weight:820;text-wrap:balance}
+
+    .points{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0 auto 24px;max-width:1180px}
+    .point{min-height:262px;padding:26px 22px 24px;border:1px solid rgba(255,255,255,.16);border-radius:28px;background:linear-gradient(155deg,rgba(255,255,255,.075),rgba(255,255,255,.028));display:flex;flex-direction:column;align-items:center;justify-content:flex-start;transition:.3s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+    .point:hover{transform:translateY(-6px);border-color:rgba(25,230,227,.48);box-shadow:0 20px 50px rgba(0,0,0,.23),0 0 36px rgba(25,230,227,.08)}
+    .feature-icon{width:74px;height:74px;border-radius:23px;display:grid;place-items:center;margin-bottom:20px;position:relative;background:linear-gradient(145deg,rgba(25,230,227,.13),rgba(23,152,229,.12) 48%,rgba(239,39,185,.18));border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 25px rgba(25,230,227,.11);transition:.3s ease}
+    .feature-icon:before{content:"";position:absolute;inset:14px;border-radius:50%;background:rgba(25,230,227,.13);filter:blur(12px)}
+    .feature-icon svg{position:relative;width:40px;height:40px;fill:none;stroke:url(#featureGradient);stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(25,230,227,.42));transition:.3s ease}
+    .point:hover .feature-icon{transform:scale(1.08) rotate(-2deg)}
+    .point h3{margin:0 0 9px;font-size:clamp(1.2rem,1.55vw,1.48rem);line-height:1.08;letter-spacing:-.025em}
+    .point .benefit{margin:0 0 10px;color:#f5f6fb;font-size:1.02rem;line-height:1.3;font-weight:650}
+    .point .detail{margin:0;color:var(--muted);font-size:.91rem;line-height:1.5;max-width:245px}
+
     section{padding:105px 0}
     .eyebrow{font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:900}
-    .section-head{margin-bottom:44px;max-width:820px}
-    .section-head h2{
-      font-size:clamp(2.25rem,4.8vw,4.4rem);line-height:1;letter-spacing:-.045em;
-      margin:14px 0 18px
-    }
+    .section-head{margin-bottom:44px;max-width:830px}
+    .section-head h2{font-size:clamp(2.25rem,4.8vw,4.4rem);line-height:1;letter-spacing:-.045em;margin:14px 0 18px}
     .section-head p{color:var(--muted);font-size:1.1rem;line-height:1.65}
     .uses{background:radial-gradient(circle at 0 0,rgba(37,7,92,.7),transparent 36%)}
-    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
     .card{
-      min-height:210px;padding:27px;border-radius:24px;border:1px solid var(--line);
-      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
-      transition:.25s ease;
+      min-height:300px;padding:34px 28px;border-radius:28px;
+      border:1px solid rgba(255,255,255,.16);
+      background:linear-gradient(155deg,rgba(255,255,255,.075),rgba(255,255,255,.028));
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;transition:.3s ease;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04)
     }
-    .card:hover{transform:translateY(-5px);border-color:rgba(25,230,227,.45)}
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(25,230,227,.48);
+      box-shadow:0 20px 50px rgba(0,0,0,.23),0 0 36px rgba(25,230,227,.08)
+    }
     .icon{
-      width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
-      margin-bottom:28px;
-      background:linear-gradient(145deg,rgba(25,230,227,.13),rgba(239,39,185,.13));
-      border:1px solid rgba(255,255,255,.1);
+      width:84px;height:84px;border-radius:25px;display:grid;place-items:center;
+      margin:0 auto 24px;position:relative;
+      background:linear-gradient(145deg,rgba(25,230,227,.13),rgba(23,152,229,.12) 48%,rgba(239,39,185,.18));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 25px rgba(25,230,227,.11);
+      transition:.3s ease
+    }
+    .icon:before{
+      content:"";position:absolute;inset:15px;border-radius:50%;
+      background:rgba(25,230,227,.13);filter:blur(12px)
     }
     .icon svg{
-      width:25px;height:25px;fill:none;stroke:var(--cyan);stroke-width:1.8;
+      position:relative;width:46px;height:46px;fill:none;
+      stroke:url(#featureGradient);stroke-width:2.15;
       stroke-linecap:round;stroke-linejoin:round;
+      filter:drop-shadow(0 0 6px rgba(25,230,227,.42))
     }
-    .card h3{margin:0 0 10px;font-size:1.22rem}
-    .card p{margin:0;color:var(--muted);line-height:1.55}
-    .how{
-      background:
-        radial-gradient(circle at 8% 10%,rgba(25,230,227,.10),transparent 26%),
-        radial-gradient(circle at 90% 85%,rgba(239,39,185,.11),transparent 28%),
-        linear-gradient(180deg,#11102a,#160b35);
-      color:#fff;
+    .card:hover .icon{transform:scale(1.07) rotate(-2deg)}
+    .card h3{
+      margin:0 0 12px;font-size:clamp(1.35rem,1.8vw,1.72rem);
+      line-height:1.1;letter-spacing:-.025em
     }
+    .card p{
+      margin:0;color:var(--muted);line-height:1.55;
+      font-size:1.02rem;max-width:330px
+    }
+
+    .how{background:radial-gradient(circle at 8% 10%,rgba(25,230,227,.10),transparent 26%),radial-gradient(circle at 90% 85%,rgba(239,39,185,.11),transparent 28%),linear-gradient(180deg,#11102a,#160b35)}
     .how-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
-    .how-copy h2{
-      font-size:clamp(2.6rem,5vw,4.7rem);line-height:1;letter-spacing:-.05em;
-      margin:14px 0 20px;
-    }
-    .how-copy>p{color:#c6c8d6;font-size:1.1rem;line-height:1.65}
-    .steps{margin-top:34px;display:grid;gap:16px}
-    .step{
-      display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;
-      padding:22px;border:1px solid rgba(255,255,255,.12);border-radius:20px;
-      background:rgba(255,255,255,.055);
-    }
-    .num{
-      width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
-      background:linear-gradient(145deg,var(--cyan),var(--blue),var(--pink));
-      color:#090a12;font-weight:900;font-size:1.05rem;
-    }
-    .step h3{margin:2px 0 8px;font-size:1.2rem}
-    .step p{margin:0;color:#c3c6d4;line-height:1.55}
-    .channel-dots{display:flex;gap:8px;margin-top:12px}
-    .dot{width:12px;height:12px;border-radius:50%}
-    .blue{background:#1698e5}.red{background:#ef3f6d}.green{background:#2bd66f}
+    .how-copy h2{font-size:clamp(2.6rem,5vw,4.7rem);line-height:1;letter-spacing:-.05em;margin:14px 0 20px}.how-copy>p{color:#c6c8d6;font-size:1.1rem;line-height:1.65}
+    .steps{margin-top:34px;display:grid;gap:16px}.step{display:grid;grid-template-columns:52px 1fr;gap:18px;align-items:start;padding:22px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:rgba(255,255,255,.055)}
+    .num{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,var(--cyan),var(--blue),var(--pink));color:#090a12;font-weight:900;font-size:1.05rem}
+    .step h3{margin:2px 0 8px;font-size:1.2rem}.step p{margin:0;color:#c3c6d4;line-height:1.55}.channel-dots{display:flex;gap:8px;margin-top:12px}.dot{width:12px;height:12px;border-radius:50%}.blue{background:#1698e5}.red{background:#ef3f6d}.green{background:#2bd66f}
     .how-image img{height:700px;object-fit:cover;border-radius:30px}
     .gallery{background:#090a14}
-    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
-    .gallery-col{display:grid;gap:16px}
-    .gallery img{height:320px;object-fit:cover;border-radius:24px}
-    .gallery .tall{height:656px}
-    .contact{
-      text-align:center;position:relative;overflow:hidden;
-      background:
-        radial-gradient(circle at 12% 25%,rgba(25,230,227,.24),transparent 27%),
-        radial-gradient(circle at 88% 75%,rgba(239,39,185,.22),transparent 30%),
-        var(--violet);
-    }
-    .contact h2{
-      font-size:clamp(3rem,6vw,5.5rem);line-height:.98;letter-spacing:-.05em;
-      margin:0 auto 22px;max-width:900px;
-    }
-    .contact p{max-width:680px;margin:0 auto 34px;color:#d9d6e7;font-size:1.14rem;line-height:1.6}
-    .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-    footer{padding:38px 0;border-top:1px solid var(--line);background:#05060b;color:#aeb2bd}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
-    .float-wa{
-      position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;
-      display:grid;place-items:center;background:#25D366;color:#04150a;font-weight:900;
-      box-shadow:0 15px 35px rgba(0,0,0,.35);
-    }
-    @media(max-width:960px){
-      .points,.cards{grid-template-columns:repeat(2,1fr)}
-      .how-grid{grid-template-columns:1fr}
-      .gallery-grid{grid-template-columns:1fr}
-      .gallery .tall{height:460px}
-    }
-    @media(max-width:640px){
-      .container{width:min(100% - 26px,1180px)}
-      .nav-links a:not(.btn){display:none}
-      .brand img{width:108px;height:42px}
-      .brand span{font-size:.58rem}
-      .hero{padding-top:120px}
-      .tagline{margin-top:30px}
-      .points,.cards{grid-template-columns:1fr}
-      section{padding:78px 0}
-      .how-image img{height:430px}
-      .gallery img,.gallery .tall{height:300px}
-      .footer-inner{flex-direction:column;align-items:flex-start}
-    }
-  </style>
+    .gallery-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+    .gallery-col{display:grid;gap:18px}
+    .gallery-item{position:relative;overflow:hidden;border-radius:26px;border:1px solid rgba(255,255,255,.08)}
+    .gallery-item img{height:330px;object-fit:cover;transition:transform .45s ease,filter .45s ease}
+    .gallery-item.tall img{height:678px}.gallery-grid-four{grid-template-columns:repeat(2,1fr)}.gallery-grid-four .gallery-item img{height:420px}
+    .gallery-item:hover img{transform:scale(1.035);filter:brightness(1.06)}
+    .gallery-label{position:absolute;left:18px;bottom:18px;padding:8px 12px;border-radius:999px;background:rgba(7,8,18,.72);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);font-size:.82rem;font-weight:750}
+    .contact{text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 12% 25%,rgba(25,230,227,.24),transparent 27%),radial-gradient(circle at 88% 75%,rgba(239,39,185,.22),transparent 30%),var(--violet)}
+    .contact h2{font-size:clamp(3rem,6vw,5.5rem);line-height:.98;letter-spacing:-.05em;margin:0 auto 22px;max-width:900px}.contact p{max-width:680px;margin:0 auto 34px;color:#d9d6e7;font-size:1.14rem;line-height:1.6}.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .btn-social{gap:10px}
+    .btn-social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.instagram-only{width:52px;height:52px;padding:0;border-radius:50%}.instagram-only svg{width:24px;height:24px}
+    footer{padding:38px 0;border-top:1px solid var(--line);background:#05060b;color:#aeb2bd}.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .float-wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#04150a;font-weight:900;box-shadow:0 15px 35px rgba(0,0,0,.35)}
+
+    @media(max-width:1060px){.points{grid-template-columns:repeat(2,1fr);max-width:780px}.point{min-height:245px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.how-grid{grid-template-columns:1fr}.gallery-grid,.gallery-grid-four{grid-template-columns:1fr}.gallery-item.tall img,.gallery-grid-four .gallery-item img{height:420px}.hero{padding-top:120px}.hero-logo{width:min(440px,70vw)}}
+    @media(max-width:640px){.container{width:min(100% - 26px,1180px)}.nav-links a:not(.btn){display:none}.brand img{width:58px;height:40px}.brand span{font-size:.58rem}.nav-inner{height:68px}.hero{min-height:auto;padding:98px 0 64px}.hero-logo{width:min(330px,82vw)}.onair-big{margin-top:.2rem}.tagline{font-size:clamp(2.45rem,13vw,4rem);margin:12px auto 22px}.points,.cards{grid-template-columns:1fr}.point{min-height:auto;padding:24px 20px}.feature-icon{width:68px;height:68px;margin-bottom:17px}.point h3{font-size:1.42rem}.point .benefit{font-size:1rem}.point .detail{font-size:.92rem}.card{min-height:auto;padding:28px 22px}.icon{width:72px;height:72px}.benefit-item{grid-template-columns:66px 1fr}.benefit-item .feature-icon{width:62px;height:62px}section{padding:78px 0}.how-image img{height:430px}.gallery-item img,.gallery-item.tall img,.gallery-grid-four .gallery-item img{height:300px}.footer-inner{flex-direction:column;align-items:flex-start}}
+  
+/* V4 - Como funciona horizontal */
+.how-grid{display:block!important}
+.how-copy{max-width:none!important;text-align:center}
+.how-copy h2{margin:0 0 20px!important}
+.how-copy>p{max-width:900px;margin:0 auto!important}
+.how-image{display:none!important}
+.benefits-list{
+  position:relative!important;
+  margin-top:64px!important;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:26px!important;
+}
+.benefits-list:before{
+  content:"";position:absolute;left:10%;right:10%;top:42px;height:2px;
+  background:linear-gradient(90deg,rgba(25,230,227,.15),var(--cyan),var(--blue),var(--pink),rgba(239,39,185,.15));
+  box-shadow:0 0 16px rgba(25,230,227,.28);
+}
+.benefit-item{
+  position:relative;z-index:1;display:flex!important;flex-direction:column!important;
+  align-items:center!important;text-align:center!important;padding:0 10px!important;border:0!important;
+}
+.benefit-item .feature-icon{
+  width:84px!important;height:84px!important;border-radius:25px!important;margin:0 auto 24px!important;
+  background:linear-gradient(145deg,rgba(25,230,227,.13),rgba(23,152,229,.12) 48%,rgba(239,39,185,.18))!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 28px rgba(25,230,227,.15)!important;
+}
+.benefit-item .feature-icon svg{width:46px!important;height:46px!important}
+.benefit-item h3{margin:0 0 10px!important;font-size:1.28rem!important;line-height:1.15}
+.benefit-item p{margin:0!important;color:#c3c6d4!important;line-height:1.55!important;font-size:.98rem!important;max-width:255px}
+@media(max-width:900px){
+  .benefits-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:42px 24px!important}
+  .benefits-list:before{display:none}
+}
+@media(max-width:640px){
+  .benefits-list{grid-template-columns:1fr!important;gap:0!important;margin-top:42px!important}
+  .benefits-list:before{
+    display:block;left:41px;right:auto;top:42px;bottom:42px;width:2px;height:auto;
+    background:linear-gradient(180deg,var(--cyan),var(--blue),var(--pink));
+  }
+  .benefit-item{
+    display:grid!important;grid-template-columns:84px 1fr!important;gap:18px!important;
+    text-align:left!important;align-items:center!important;padding:0 0 32px!important;
+  }
+  .benefit-item .feature-icon{margin:0!important}
+  .benefit-item p{max-width:none}
+}
+
+
+/* V5 - línea de conexión más difuminada */
+.benefits-list:before{
+  height:3px!important;
+  opacity:.52!important;
+  filter:blur(2.2px)!important;
+  background:linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(25,230,227,.18) 8%,
+    rgba(25,230,227,.58) 30%,
+    rgba(22,152,229,.52) 58%,
+    rgba(239,39,185,.48) 78%,
+    transparent 100%
+  )!important;
+  box-shadow:
+    0 0 10px rgba(25,230,227,.24),
+    0 0 22px rgba(22,152,229,.15),
+    0 0 30px rgba(239,39,185,.10)!important;
+}
+@media(max-width:640px){
+  .benefits-list:before{
+    width:3px!important;
+    filter:blur(2px)!important;
+    opacity:.48!important;
+    background:linear-gradient(
+      180deg,
+      transparent,
+      rgba(25,230,227,.55),
+      rgba(22,152,229,.48),
+      rgba(239,39,185,.42),
+      transparent
+    )!important;
+  }
+}
+
+
+/* V6 - auricular recortado en ¿Cómo funciona? */
+.how-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:42px;
+  align-items:center;
+  max-width:1080px;
+  margin:0 auto;
+}
+.how-top .how-intro{text-align:left}
+.how-top .how-intro h2{margin-top:0}
+.how-top .how-intro>p{margin:0!important;max-width:760px!important}
+.how-product{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.how-product img{
+  width:min(100%,260px);
+  height:auto;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 18px 38px rgba(0,0,0,.42))
+    drop-shadow(0 0 24px rgba(25,230,227,.10))
+    drop-shadow(0 0 28px rgba(239,39,185,.08));
+}
+@media(max-width:900px){
+  .how-top{grid-template-columns:1fr;text-align:center}
+  .how-top .how-intro{text-align:center}
+  .how-top .how-intro>p{margin:0 auto!important}
+  .how-product img{width:min(55vw,240px)}
+}
+@media(max-width:640px){
+  .how-product img{width:min(64vw,220px)}
+}
+
+
+/* V7 - animaciones */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes floatHeadphones{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(.6deg)}
+}
+@keyframes softGlow{
+  0%,100%{box-shadow:0 0 12px rgba(25,230,227,.10),0 0 20px rgba(239,39,185,.05)}
+  50%{box-shadow:0 0 22px rgba(25,230,227,.18),0 0 32px rgba(239,39,185,.10)}
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.is-visible{opacity:1;transform:none}
+.hero-logo,.onair-big,.tagline{animation:fadeUp .7s ease both}
+.onair-big{animation-delay:.12s}
+.tagline{animation-delay:.22s}
+.points .point{animation:fadeUp .7s ease both}
+.points .point:nth-child(1){animation-delay:.34s}
+.points .point:nth-child(2){animation-delay:.44s}
+.points .point:nth-child(3){animation-delay:.54s}
+.points .point:nth-child(4){animation-delay:.64s}
+.feature-icon,.icon{animation:softGlow 4.8s ease-in-out infinite}
+.how-product img{animation:floatHeadphones 5.5s ease-in-out infinite}
+
+/* Cursor Cinergia */
+@media (pointer:fine){
+  .cinergia-cursor{
+    position:fixed;left:0;top:0;width:42px;height:42px;
+    pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+    mix-blend-mode:screen;
+  }
+  .cinergia-cursor .ring{
+    position:absolute;inset:0;border-radius:50%;
+    border:1.5px solid rgba(25,230,227,.8);
+    transition:transform .18s ease,opacity .18s ease,border-color .18s ease;
+    filter:drop-shadow(0 0 6px rgba(25,230,227,.35));
+  }
+  .cinergia-cursor .ring.r2{
+    inset:6px;border-color:rgba(22,152,229,.78);
+    animation:cursorPulse2 1.7s ease-in-out infinite;
+  }
+  .cinergia-cursor .ring.r3{
+    inset:12px;border-color:rgba(239,39,185,.74);
+    animation:cursorPulse3 1.35s ease-in-out infinite;
+  }
+  .cinergia-cursor.is-moving .ring.r1{transform:scaleX(1.18) scaleY(.86) rotate(12deg)}
+  .cinergia-cursor.is-moving .ring.r2{transform:scaleX(.9) scaleY(1.18) rotate(-16deg)}
+  .cinergia-cursor.is-moving .ring.r3{transform:scale(1.12)}
+  .cinergia-cursor.is-link .ring.r1{transform:scale(1.32)}
+  .cinergia-cursor.is-link .ring.r2{transform:scale(1.18)}
+  .cinergia-cursor.is-link .ring.r3{transform:scale(.86)}
+  .cinergia-cursor.is-clicking .ring{transform:scale(.72)!important;opacity:.5}
+  @keyframes cursorPulse2{
+    0%,100%{border-radius:50%;transform:rotate(0)}
+    50%{border-radius:44% 56% 52% 48%;transform:rotate(10deg)}
+  }
+  @keyframes cursorPulse3{
+    0%,100%{border-radius:50%;transform:rotate(0)}
+    50%{border-radius:55% 45% 48% 52%;transform:rotate(-12deg)}
+  }
+}
+
+
+/* V8: burbujas de menor a mayor que acompañan el cursor */
+.cinergia-cursor{display:none!important}
+.cursor-bubble{position:fixed;left:0;top:0;border-radius:50%;pointer-events:none;z-index:9999;
+border:1.3px solid rgba(25,230,227,.78);box-shadow:0 0 8px rgba(25,230,227,.22);
+transform:translate(-50%,-50%);opacity:0;will-change:left,top}
+.cursor-bubble.b2{border-color:rgba(22,152,229,.72);box-shadow:0 0 9px rgba(22,152,229,.20)}
+.cursor-bubble.b3{border-color:rgba(239,39,185,.70);box-shadow:0 0 10px rgba(239,39,185,.20)}
+@media(pointer:coarse),(max-width:700px){.cursor-bubble{display:none!important}}
+
+.feature-icon .icon-number{
+  position:relative;z-index:2;
+  font-size:30px;font-weight:900;line-height:1;
+  color:#19e6e3;
+  text-shadow:0 0 10px rgba(25,230,227,.55),0 0 18px rgba(239,39,185,.18);
+}
+
+/* V9 gallery carousel */
+.gallery-carousel{position:relative;max-width:1050px;margin:34px auto 0}
+.carousel-viewport{overflow:hidden;border-radius:28px;border:1px solid rgba(255,255,255,.10);background:#050611;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.carousel-track{display:flex;transition:transform .75s cubic-bezier(.22,.61,.36,1);will-change:transform}
+.carousel-slide{min-width:100%;position:relative}
+.carousel-slide img{width:100%;height:min(64vh,620px);object-fit:cover;display:block}
+.carousel-slide .gallery-label{z-index:2}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(7,8,18,.56);backdrop-filter:blur(10px);color:white;font-size:26px;display:grid;place-items:center;cursor:pointer;transition:.25s}
+.carousel-arrow:hover{background:rgba(25,230,227,.18);border-color:rgba(25,230,227,.55);transform:translateY(-50%) scale(1.06)}
+.carousel-prev{left:16px}.carousel-next{right:16px}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.carousel-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;transition:.25s}
+.carousel-dot.active{width:25px;border-radius:999px;background:linear-gradient(90deg,#19e6e3,#1698e5,#ef27b9)}
+@media(max-width:640px){.carousel-slide img{height:390px}.carousel-arrow{width:38px;height:38px;font-size:22px}.carousel-prev{left:10px}.carousel-next{right:10px}}
+
+/* V12 - iconos originales + número a la derecha */
+.feature-icon.icon-number-right{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:6px!important;
+}
+.feature-icon.icon-number-right svg{
+  width:30px!important;height:30px!important;flex:0 0 30px;
+}
+.feature-icon.icon-number-right .side-number{
+  font-size:21px;font-weight:900;line-height:1;color:#19e6e3;
+  text-shadow:0 0 8px rgba(25,230,227,.6),0 0 13px rgba(239,39,185,.2);
+}
+
+
+/* Galería compacta: entra completa en pantalla y conserva cada foto sin recortes */
+.gallery-carousel{max-width:820px;margin-top:24px}
+.carousel-viewport{
+  position:relative;
+  overflow:hidden;
+  background:#050611;
+  transition:height .55s cubic-bezier(.22,.61,.36,1);
+}
+.carousel-track{align-items:flex-start}
+.carousel-slide{
+  min-width:100%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#050611;
+}
+.carousel-slide img{
+  display:block!important;
+  width:auto!important;
+  height:auto!important;
+  max-width:100%!important;
+  max-height:min(55vh,520px)!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  background:#050611;
+}
+.carousel-dots{margin-top:12px}
+@media(max-width:900px){.gallery-carousel{max-width:760px}}
+@media(max-width:640px){
+  .gallery-carousel{max-width:94vw;margin-top:18px}
+  .carousel-slide img{max-height:min(50vh,390px)!important}
+}
+
+</style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="#inicio">
-        <img src="assets/logo-cinergia-final-v2.png" alt="Cinergia">
-        <span>ON AIR</span>
-      </a>
-      <div class="nav-links">
-        <a href="#usos">Usos</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#galeria">Galería</a>
-        <a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20cotizar%20un%20evento" target="_blank">Contacto</a>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-wrap">
-        <img class="hero-logo" src="assets/logo-cinergia-final-v2.png" alt="Logo Cinergia">
-        <div class="onair-big">ON AIR</div>
-        <div class="tagline">Experiencias que se escuchan.</div>
-
-        <div class="points">
-         <div class="point">
-    <strong>🎧 3 canales</strong><br>
-    en simultáneo
+<svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0"><defs><lineargradient id="featureGradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#19e6e3"></stop><stop offset="52%" stop-color="#1698e5"></stop><stop offset="100%" stop-color="#ef27b9"></stop></lineargradient></defs></svg>
+<nav class="nav"><div class="container nav-inner"><a class="brand" href="#inicio"><img alt="Cinergia" src="assets/logo-cinergia-compacto.png"/><span>ON AIR</span></a><div class="nav-links"><a href="#usos">Usos</a><a href="#como-funciona">Cómo funciona</a><a href="#galeria">Galería</a><a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20cotizar%20un%20evento" rel="noopener" target="_blank">Contacto</a></div></div></nav>
+<main>
+<section class="hero" id="inicio"><div class="container hero-wrap">
+<img alt="Logo Cinergia" class="hero-logo" src="assets/logo-cinergia-compacto.png"/>
+<div class="onair-big">ON AIR</div>
+<h1 class="tagline">Experiencias que se escuchan.</h1>
+<div class="points">
+<article class="point"><div class="feature-icon icon-number-right"><svg aria-hidden="true" viewbox="0 0 48 48"><path d="M10 13h28M10 24h28M10 35h28"></path><path d="M18 9v8M31 20v8M23 31v8"></path><circle cx="18" cy="20" r="3"></circle><circle cx="31" cy="31" r="3"></circle><circle cx="23" cy="28" r="3"></circle></svg><span class="side-number">3</span></div><h3>3 canales independientes</h3><p class="benefit">Elegí el audio que querés escuchar</p></article>
+<article class="point"><div class="feature-icon"><svg aria-hidden="true" viewbox="0 0 48 48"><path d="M24 39V23"></path><circle cx="24" cy="18" r="3"></circle><path d="M16 26a11 11 0 0 1 0-16M32 26a11 11 0 0 0 0-16"></path><path d="M10 32a19 19 0 0 1 0-28M38 32a19 19 0 0 0 0-28"></path></svg></div><h3>Hasta 100 metros de alcance</h3><p class="benefit">Señal estable y sin interferencias</p></article>
+<article class="point"><div class="feature-icon"><svg aria-hidden="true" viewbox="0 0 48 48"><path d="M8 27v-5a16 16 0 0 1 32 0v5"></path><path d="M8 27h7v14H11a3 3 0 0 1-3-3V27ZM40 27h-7v14h4a3 3 0 0 0 3-3V27Z"></path><path d="M24 8v4"></path></svg></div><h3>Sonido HiFi</h3><p class="benefit">Máxima claridad en cada palabra</p></article>
+<article class="point"><div class="feature-icon icon-number-right"><svg aria-hidden="true" viewbox="0 0 48 48"><rect height="22" rx="5" width="32" x="7" y="14"></rect><path d="M39 21h3v8h-3"></path><path d="m24 18-6 10h6l-2 7 8-12h-6l2-5Z"></path></svg><span class="side-number">8</span></div><h3>8 horas de autonomía</h3><p class="benefit">Energía para todo tu evento</p></article>
 </div>
-
-<div class="point">
-    <strong>📡 100 m</strong><br>
-    de alcance
+<a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20recibir%20una%20propuesta" rel="noopener" target="_blank">Solicitar presupuesto</a>
+</div></section>
+<section class="uses reveal" id="usos"><div class="container"><div class="section-head"><div class="eyebrow">Cómo, cuándo y dónde usar auriculares silenciosos</div><h2>Una solución adaptable a cada experiencia.</h2><p>Los auriculares silenciosos permiten llevar audio claro y personalizado a todo tipo de eventos, espacios y públicos, sin contaminación sonora exterior.</p></div><div class="cards">
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><path d="M24 29a8 8 0 0 0 8-8V13a8 8 0 0 0-16 0v8a8 8 0 0 0 8 8Z"></path><path d="M10 21a14 14 0 0 0 28 0M24 35v8M17 43h14"></path></svg></div><h3>Conferencias</h3><p>Audio claro y concentración total para congresos y eventos corporativos.</p></article>
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><circle cx="24" cy="24" r="18"></circle><path d="M6 24h36M24 6a30 30 0 0 1 0 36M24 6a30 30 0 0 0 0 36"></path></svg></div><h3>Traducción simultánea</h3><p>3 idiomas en simultáneo.</p></article>
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><path d="M8 27v-5a16 16 0 0 1 32 0v5"></path><path d="M8 27h7v14H11a3 3 0 0 1-3-3V27ZM40 27h-7v14h4a3 3 0 0 0 3-3V27Z"></path></svg></div><h3>Silent Party</h3><p>3 pistas de baile en un solo lugar, sin molestar vecinos.</p></article>
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><path d="m6 12 12-6 12 6 12-6v30l-12 6-12-6-12 6V12Z"></path><path d="M18 6v30M30 12v30"></path></svg></div><h3>Visitas guiadas</h3><p>Libertad para explorar sin perderte de nada.</p></article>
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><path d="M12 14h24M8 20h32M14 27h20M18 34h12"></path><path d="M6 10h4v28H6zM38 10h4v28h-4z"></path></svg></div><h3>Fitness</h3><p>Instrucciones precisas y motivación constante.</p></article>
+<article class="card"><div class="icon"><svg viewbox="0 0 48 48"><rect height="28" rx="4" width="36" x="6" y="10"></rect><path d="m20 18 12 6-12 6V18Z"></path></svg></div><h3>Cine y teatro</h3><p>Experiencias audiovisuales sin distracciones.</p></article>
+</div></div></section>
+<section class="how reveal" id="como-funciona"><div class="container how-grid"><div class="how-copy"><div class="how-top"><div class="how-intro"><h2>¿Cómo funciona?</h2><p>El sonido inalámbrico conecta audiencias, mejora la concentración y genera mayor impacto, sin contaminación sonora. Ideal para conferencias, traducción simultánea y todo tipo de eventos.</p></div><div class="how-product"><img alt="Auricular Cinergia On Air" loading="lazy" src="assets/headphones-neon-transparente.png"/></div></div><div class="benefits-list">
+<div class="benefit-item"><div class="feature-icon"><svg viewbox="0 0 48 48"><path d="M10 13h28M10 24h28M10 35h28"></path><path d="M18 9v8M31 20v8M23 31v8"></path><circle cx="18" cy="20" r="3"></circle><circle cx="31" cy="31" r="3"></circle><circle cx="23" cy="28" r="3"></circle></svg></div><div><h3>Elegí tu canal</h3><p>Cada auricular recibe hasta tres señales diferentes en simultáneo. Los canales se identifican por color.</p></div></div>
+<div class="benefit-item"><div class="feature-icon"><svg viewbox="0 0 48 48"><path d="M24 39V23"></path><circle cx="24" cy="18" r="3"></circle><path d="M16 26a11 11 0 0 1 0-16M32 26a11 11 0 0 0 0-16"></path><path d="M10 32a19 19 0 0 1 0-28M38 32a19 19 0 0 0 0-28"></path></svg></div><div><h3>Transmisión inalámbrica confiable</h3><p>El audio llega mediante señal UHF, con cobertura de hasta 100 metros y libertad de movimiento.</p></div></div>
+<div class="benefit-item"><div class="feature-icon"><svg viewbox="0 0 48 48"><path d="M8 27v-5a16 16 0 0 1 32 0v5"></path><path d="M8 27h7v14H11a3 3 0 0 1-3-3V27ZM40 27h-7v14h4a3 3 0 0 0 3-3V27Z"></path><path d="M24 8v4"></path></svg></div><div><h3>Sonido HiFi y volumen individual</h3><p>Cada persona disfruta audio nítido y controla su propio volumen.</p></div></div>
+<div class="benefit-item"><div class="feature-icon"><svg viewbox="0 0 48 48"><rect height="22" rx="5" width="32" x="7" y="14"></rect><path d="M39 21h3v8h-3"></path><path d="m24 18-6 10h6l-2 7 8-12h-6l2-5Z"></path></svg></div><div><h3>Autonomía para toda la jornada</h3><p>Hasta 8 horas de uso continuo sin interrupciones.</p></div></div>
+</div></div><div class="how-image"><img alt="Detalle de auricular Cinergia On Air" loading="lazy" src="assets/headphone-detail.jpg"/></div></div></section>
+<section class="gallery reveal" id="galeria"><div class="container">
+<div class="section-head"><div class="eyebrow">Cinergia On Air en acción</div><p>Conferencias, recorridos, visitas industriales y experiencias donde cada participante escucha con claridad.</p></div>
+<div aria-label="Galería Cinergia On Air" class="gallery-carousel">
+<div class="carousel-viewport">
+<div class="carousel-track">
+<div class="carousel-slide"><img alt="Persona utilizando auriculares en una experiencia de bienestar" src="assets/galeria-bienestar-individual.png"/><span class="gallery-label">Bienestar</span></div><div class="carousel-slide"><img alt="Grupo participando de una experiencia de bienestar con auriculares" loading="lazy" src="assets/galeria-bienestar-grupal.jpeg"/><span class="gallery-label">Bienestar grupal</span></div><div class="carousel-slide"><img alt="Grupo utilizando auriculares durante una exposición" loading="lazy" src="assets/galeria-exposicion.png"/><span class="gallery-label">Exposiciones</span></div><div class="carousel-slide"><img alt="Recorrido industrial con auriculares" loading="lazy" src="assets/galeria-recorrido-industrial.png"/><span class="gallery-label">Visitas industriales</span></div><div class="carousel-slide"><img alt="Grupo realizando una visita guiada con auriculares" loading="lazy" src="assets/galeria-visita-guiada.png"/><span class="gallery-label">Visitas guiadas</span></div><div class="carousel-slide"><img alt="Recorrido industrial con auriculares" loading="lazy" src="assets/galeria-fabrica.jpeg"/><span class="gallery-label">Visitas industriales</span></div><div class="carousel-slide"><img alt="Participante utilizando auriculares durante una conferencia" loading="lazy" src="assets/galeria-conferencia-01.jpeg"/><span class="gallery-label">Conferencias</span></div><div class="carousel-slide"><img alt="Participante utilizando auriculares durante una conferencia" loading="lazy" src="assets/galeria-conferencia-02.jpeg"/><span class="gallery-label">Conferencias</span></div>
 </div>
-
-<div class="point">
-    <strong>🎵 Sonido HiFi</strong>
 </div>
-
-<div class="point">
-    <strong>🔋 8 hs</strong><br>
-    de autonomía
+<button aria-label="Imagen anterior" class="carousel-arrow carousel-prev">‹</button>
+<button aria-label="Imagen siguiente" class="carousel-arrow carousel-next">›</button>
+<div aria-label="Navegación de galería" class="carousel-dots"></div>
 </div>
-        </div>
+</div></section>
+<section class="contact reveal" id="contacto"><div class="container"><h2>Contanos tu próxima experiencia.</h2><p>Armamos una propuesta a medida con auriculares, transmisores, configuración técnica y soporte durante el evento.</p><div class="contact-links"><a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20recibir%20una%20propuesta" rel="noopener" target="_blank">Hablar por WhatsApp</a><a aria-label="Instagram de Cinergia" class="btn btn-ghost btn-social instagram-only" href="https://www.instagram.com/cinergia.agency/" rel="noopener" target="_blank"><svg aria-hidden="true" viewbox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></svg></a></div></div></section>
+</main>
+<footer><div class="container footer-inner"><div>© 2026 Cinergia On Air</div><div>+54 11 3679-1155 · @cinergia.agency</div></div></footer>
+<a aria-label="WhatsApp" class="float-wa" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air" rel="noopener" target="_blank">W</a>
+<div aria-hidden="true" class="cinergia-cursor">
+<span class="ring r1"></span>
+<span class="ring r2"></span>
+<span class="ring r3"></span>
+</div>
+<script>
+    const revealObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
-        <a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20recibir%20una%20propuesta" target="_blank">Solicitar presupuesto</a>
-      </div>
-    </section>
+    const cursor = document.querySelector('.cinergia-cursor');
+    if(cursor && window.matchMedia('(pointer:fine)').matches){
+      let moveTimer;
+      window.addEventListener('mousemove',e=>{
+        cursor.style.left=e.clientX+'px';
+        cursor.style.top=e.clientY+'px';
+        cursor.classList.add('is-moving');
+        clearTimeout(moveTimer);
+        moveTimer=setTimeout(()=>cursor.classList.remove('is-moving'),90);
+      });
+      document.querySelectorAll('a,button,.card,.point,.gallery-item').forEach(el=>{
+        el.addEventListener('mouseenter',()=>cursor.classList.add('is-link'));
+        el.addEventListener('mouseleave',()=>cursor.classList.remove('is-link'));
+      });
+      window.addEventListener('mousedown',()=>cursor.classList.add('is-clicking'));
+      window.addEventListener('mouseup',()=>cursor.classList.remove('is-clicking'));
+    }
+  </script>
+<span aria-hidden="true" class="cursor-bubble b1"></span><span aria-hidden="true" class="cursor-bubble b2"></span><span aria-hidden="true" class="cursor-bubble b3"></span><span aria-hidden="true" class="cursor-bubble b1"></span><span aria-hidden="true" class="cursor-bubble b2"></span><span aria-hidden="true" class="cursor-bubble b3"></span>
+<script>
+(()=>{if(!matchMedia('(pointer:fine)').matches)return;
+const els=[...document.querySelectorAll('.cursor-bubble')], sizes=[6,9,13,17,22,28];
+const pts=els.map((el,i)=>({el,x:-100,y:-100,s:sizes[i]}));let mx=-100,my=-100,on=false;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;on=true;els.forEach(x=>x.style.opacity='1')},{passive:true});
+addEventListener('mouseleave',()=>{on=false;els.forEach(x=>x.style.opacity='0')});
+function tick(t){if(on){let tx=mx,ty=my;pts.forEach((p,i)=>{let f=.36-i*.038;p.x+=(tx-p.x)*f;p.y+=(ty-p.y)*f;
+let w=Math.sin(t/170+i*.85)*(1+i*.22);p.el.style.left=(p.x+w)+'px';p.el.style.top=(p.y-w*.45)+'px';
+p.el.style.width=p.s+'px';p.el.style.height=p.s+'px';tx=p.x;ty=p.y;});}requestAnimationFrame(tick)}requestAnimationFrame(tick);
+})();
+</script>
+<script>
+(() => {
+  const carousel = document.querySelector('.gallery-carousel');
+  if(!carousel) return;
+  const track = carousel.querySelector('.carousel-track');
+  const slides = [...carousel.querySelectorAll('.carousel-slide')];
+  const dotsBox = carousel.querySelector('.carousel-dots');
+  const prev = carousel.querySelector('.carousel-prev');
+  const next = carousel.querySelector('.carousel-next');
+  let index = 0, timer, startX = null;
 
-    <section class="uses" id="usos">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Cómo, cuándo y dónde usar auriculares silenciosos</div>
-          <h2>Una solución adaptable a cada experiencia.</h2>
-          <p>Los auriculares silenciosos permiten llevar audio claro y personalizado a todo tipo de eventos, espacios y públicos, sin contaminación sonora exterior.</p>
-        </div>
+  slides.forEach((_,i)=>{
+    const dot=document.createElement('button');
+    dot.className='carousel-dot'+(i===0?' active':'');
+    dot.setAttribute('aria-label','Ver imagen '+(i+1));
+    dot.addEventListener('click',()=>go(i,true));
+    dotsBox.appendChild(dot);
+  });
+  const dots=[...dotsBox.children];
 
-        <div class="cards">
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 14a4 4 0 0 0 4-4V6a4 4 0 0 0-8 0v4a4 4 0 0 0 4 4Z"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4M8 21h8"/></svg></div>
-            <h3>Conferencias</h3><p>Audio claro y uniforme para congresos, presentaciones y eventos corporativos.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-            <h3>Traducción simultánea</h3><p>Diferentes idiomas o contenidos disponibles en canales independientes.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 13v-2a8 8 0 0 1 16 0v2"/><path d="M4 13h3v7H5a1 1 0 0 1-1-1v-6ZM20 13h-3v7h2a1 1 0 0 0 1-1v-6Z"/></svg></div>
-            <h3>Silent Party</h3><p>Música y energía sin contaminación sonora ni límites de volumen exterior.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15M15 6v15"/></svg></div>
-            <h3>Recorridos guiados</h3><p>La voz del guía llega con claridad en fábricas, museos, ciudades y grandes espacios.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="m3 8 9-5 9 5-9 5-9-5Z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5M21 8v6"/></svg></div>
-            <h3>Educación</h3><p>Capacitaciones y actividades con mayor concentración, aun en espacios compartidos.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M6 7h12M4 10h16M7 13h10M9 16h6"/><path d="M3 5h2v14H3zM19 5h2v14h-2z"/></svg></div>
-            <h3>Fitness</h3><p>Clases y entrenamientos con instrucciones precisas y música personalizada.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3V9Z"/></svg></div>
-            <h3>Cine y teatro</h3><p>Experiencias audiovisuales sin amplificar el sonido hacia el exterior.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 21V9l6 3V9l6 3V5h6v16H3Z"/><path d="M7 16h2M12 16h2M17 16h2"/></svg></div>
-            <h3>Visitas industriales</h3><p>Comunicación segura y efectiva en ambientes con ruido operativo.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+  function go(i,restart=false){
+    index=(i+slides.length)%slides.length;
+    track.style.transform=`translateX(-${index*100}%)`;
+    dots.forEach((d,j)=>d.classList.toggle('active',j===index));
+    if(restart) startAuto();
+  }
+  function startAuto(){
+    clearInterval(timer);
+    timer=setInterval(()=>go(index+1),4200);
+  }
+  prev.addEventListener('click',()=>go(index-1,true));
+  next.addEventListener('click',()=>go(index+1,true));
+  carousel.addEventListener('mouseenter',()=>clearInterval(timer));
+  carousel.addEventListener('mouseleave',startAuto);
+  carousel.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;clearInterval(timer)},{passive:true});
+  carousel.addEventListener('touchend',e=>{
+    if(startX===null)return;
+    const dx=e.changedTouches[0].clientX-startX;
+    if(Math.abs(dx)>45) go(index+(dx<0?1:-1));
+    startX=null;startAuto();
+  },{passive:true});
+  startAuto();
+})();
+</script>
+<script>
+(() => {
+  const carousel = document.querySelector('.gallery-carousel');
+  if(!carousel) return;
+  const viewport = carousel.querySelector('.carousel-viewport');
+  const track = carousel.querySelector('.carousel-track');
+  const slides = [...carousel.querySelectorAll('.carousel-slide')];
+  if(!viewport || !track || !slides.length) return;
 
-    <section class="how" id="como-funciona">
-      <div class="container how-grid">
-        <div class="how-copy">
-          <div class="eyebrow">Cómo funciona</div>
-          <h2>Tecnología simple. Experiencia total.</h2>
-          <p>El sistema permite que cada usuario elija qué escuchar, con sonido de alta definición, transmisión estable y control individual.</p>
+  let current = 0;
 
-          <div class="steps">
-            <div class="step">
-              <div class="num">1</div>
-              <div>
-                <h3>Elegí el canal que más te guste</h3>
-                <p>El auricular recibe hasta tres señales distintas de manera simultánea y seleccionable. Cada canal se identifica con un color: azul, rojo o verde.</p>
-                <div class="channel-dots"><span class="dot blue"></span><span class="dot red"></span><span class="dot green"></span></div>
-              </div>
-            </div>
+  function fit(index){
+    current = (index + slides.length) % slides.length;
+    const img = slides[current].querySelector('img');
+    if(!img) return;
 
-            <div class="step">
-              <div class="num">2</div>
-              <div>
-                <h3>Cómo llega el sonido al auricular</h3>
-                <p>El audio se envía desde el transmisor mediante una señal UHF, reduciendo interferencias y permitiendo un alcance de emisión y recepción de hasta 100 metros.</p>
-              </div>
-            </div>
+    const apply = () => {
+      const w = viewport.clientWidth || carousel.clientWidth;
+      if(!w || !img.naturalWidth || !img.naturalHeight) return;
+      const naturalH = w * (img.naturalHeight / img.naturalWidth);
+      const maxH = Math.min(window.innerHeight * (window.innerWidth <= 640 ? 0.50 : 0.55), window.innerWidth <= 640 ? 390 : 520);
+      const targetH = Math.min(naturalH, maxH);
+      viewport.style.height = Math.round(targetH) + 'px';
+    };
 
-            <div class="step">
-              <div class="num">3</div>
-              <div>
-                <h3>Sonido HD y control individual</h3>
-                <p>El sistema envolvente permite escuchar música o voz en alta definición. Cada auricular incorpora control de volumen para que cada usuario elija su nivel de escucha.</p>
-              </div>
-            </div>
+    if(img.complete && img.naturalWidth) apply();
+    else img.addEventListener('load', apply, {once:true});
+  }
 
-            <div class="step">
-              <div class="num">4</div>
-              <div>
-                <h3>Autonomía para todo el evento</h3>
-                <p>La batería ofrece entre 8 y 10 horas de uso continuo, sin necesidad de recarga durante la experiencia.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="how-image">
-          <img src="assets/headphone-detail.jpg" alt="Detalle de auricular Cinergia On Air">
-        </div>
-      </div>
-    </section>
+  const observer = new MutationObserver(() => {
+    const t = track.style.transform || '';
+    const m = t.match(/translateX\(-([0-9.]+)%\)/);
+    if(m) fit(Math.round(parseFloat(m[1]) / 100));
+  });
+  observer.observe(track, {attributes:true, attributeFilter:['style']});
 
-    <section class="gallery" id="galeria">
-      <div class="container">
-        <div class="section-head">
-          <div class="eyebrow">Cinergia On Air en acción</div>
-          <p>Conferencias, recorridos, visitas industriales y experiencias donde cada participante escucha con claridad.</p>
-        </div>
-
-        <div class="gallery-grid">
-          <img class="tall" src="assets/headphones-table.jpg" alt="Auriculares Cinergia On Air preparados para un evento">
-          <div class="gallery-col">
-            <img src="assets/hero.jpg" alt="Conferencia con auriculares Cinergia On Air">
-            <img src="assets/city-tour.jpg" alt="Recorrido urbano con auriculares">
-          </div>
-          <div class="gallery-col">
-            <img src="assets/factory.jpg" alt="Visita industrial con auriculares">
-            <img src="assets/conference.jpg" alt="Participante usando auriculares">
-          </div>
-          <img class="tall" src="assets/student.jpg" alt="Participante tomando notas con auriculares">
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contacto">
-      <div class="container">
-        <h2>Contanos tu próxima experiencia.</h2>
-        <p>Armamos una propuesta a medida con auriculares, transmisores, configuración técnica y soporte durante el evento.</p>
-        <div class="contact-links">
-          <a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20recibir%20una%20propuesta" target="_blank">Hablar por WhatsApp</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/cinergia.agency/" target="_blank">@cinergia.agency</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>© 2026 Cinergia On Air</div>
-      <div>+54 11 3679-1155 · @cinergia.agency</div>
-    </div>
-  </footer>
-
-  <a class="float-wa" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air" target="_blank" aria-label="WhatsApp">W</a>
+  window.addEventListener('resize',()=>fit(current));
+  fit(0);
+})();
+</script>
 </body>
 </html>
