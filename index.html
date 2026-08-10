@@ -792,28 +792,145 @@ transform:translate(-50%,-50%);opacity:0;will-change:left,top}
 </style>
 
 <style>
-/* V24 — SOLO GALERÍA: imágenes más grandes + separación de 0,5 cm */
-@media (min-width: 901px){
-  #galeria{padding-top:14px!important;padding-bottom:14px!important;}
-  #galeria .section-head{margin-bottom:6px!important;}
-  #galeria .container{width:min(100% - 10px,1600px)!important;}
-  #galeria .gallery-grid{
-    width:min(1580px,calc(100% - 4px))!important;
-    height:min(76vh,740px)!important;
-    min-height:540px!important;
-    grid-template-rows:minmax(0,1.84fr) minmax(0,1.20fr)!important;
-    gap:.5cm!important;
-    margin-top:6px!important;
-  }
-}
-@media (min-width: 901px) and (max-height: 850px){
-  #galeria .gallery-grid{height:70vh!important;min-height:470px!important;gap:.5cm!important;}
-  #galeria{padding-top:10px!important;padding-bottom:10px!important;}
-}
+/* V25 — Responsive refinado: desktop intacto, tablet/celular optimizados */
 @media (max-width: 900px){
-  #galeria .gallery-grid{gap:.5cm!important;}
+  .container{width:min(100% - 32px,1180px)!important;}
+  section{padding:72px 0!important;}
+  .section-head{margin-bottom:30px!important;}
+  .section-head h2{font-size:clamp(2rem,8vw,3.4rem)!important;}
+  .section-head p{font-size:1rem!important;line-height:1.55!important;}
+
+  .nav-inner{height:70px!important;}
+  .nav-links{gap:10px!important;}
+  .nav-links a:not(.btn){display:none!important;}
+  .nav-links .btn{padding:11px 16px!important;font-size:.88rem!important;}
+
+  .hero{min-height:auto!important;padding:104px 0 54px!important;}
+  .hero-logo{width:min(390px,72vw)!important;}
+  .onair-big{font-size:.82rem!important;letter-spacing:.46em!important;}
+  .tagline{font-size:clamp(2.6rem,9vw,4.6rem)!important;max-width:760px!important;margin:14px auto 26px!important;}
+  .points{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;max-width:760px!important;}
+  .point{min-height:215px!important;padding:22px 18px!important;border-radius:22px!important;}
+  .feature-icon{width:64px!important;height:64px!important;border-radius:20px!important;margin-bottom:14px!important;}
+  .feature-icon svg{width:34px!important;height:34px!important;}
+
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;}
+  .card{min-height:250px!important;padding:26px 20px!important;border-radius:22px!important;}
+  .icon{width:70px!important;height:70px!important;margin-bottom:18px!important;}
+
+  .how-top{gap:26px!important;}
+  .benefits-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:34px 20px!important;margin-top:42px!important;}
+
+  /* Galería mobile/tablet: 2 columnas, fotos grandes y legibles */
+  #galeria{padding:54px 0!important;}
+  #galeria .container{width:min(100% - 24px,1180px)!important;}
+  #galeria .gallery-grid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-rows:auto!important;
+    height:auto!important;
+    min-height:0!important;
+    width:100%!important;
+    gap:8px!important;
+    margin-top:18px!important;
+  }
+  #galeria .gallery-card,
+  #galeria .gallery-card:nth-child(n){
+    grid-column:auto!important;
+    grid-row:auto!important;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:4/3!important;
+    border-radius:12px!important;
+    overflow:hidden!important;
+  }
+  #galeria .gallery-card:nth-child(1),
+  #galeria .gallery-card:nth-child(8),
+  #galeria .gallery-card:nth-child(6){
+    aspect-ratio:3/2!important;
+  }
+  #galeria .gallery-card:nth-child(1){grid-column:1 / -1!important;}
+  #galeria .gallery-card:nth-child(8){grid-column:1 / 2!important;}
+  #galeria .gallery-card:nth-child(6){grid-column:2 / 3!important;}
+  #galeria .gallery-card img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    border-radius:12px!important;
+    box-shadow:none!important;
+  }
+
+  .contact h2{font-size:clamp(2.5rem,9vw,4.4rem)!important;}
+  .contact p{font-size:1rem!important;}
+}
+
+@media (max-width: 640px){
+  .container{width:min(100% - 22px,1180px)!important;}
+  section{padding:58px 0!important;}
+
+  .brand{gap:9px!important;}
+  .brand img{width:52px!important;height:36px!important;}
+  .brand span{font-size:.54rem!important;letter-spacing:.30em!important;}
+  .nav-links .btn{padding:10px 14px!important;font-size:.82rem!important;}
+
+  .hero{padding:92px 0 44px!important;}
+  .hero-logo{width:min(310px,80vw)!important;}
+  .onair-big{font-size:.69rem!important;letter-spacing:.39em!important;margin-left:.39em!important;}
+  .tagline{font-size:clamp(2.35rem,12vw,3.6rem)!important;line-height:.98!important;margin:11px auto 22px!important;}
+
+  .points{grid-template-columns:1fr 1fr!important;gap:10px!important;}
+  .point{min-height:185px!important;padding:18px 12px!important;border-radius:18px!important;}
+  .point h3{font-size:1.05rem!important;line-height:1.12!important;}
+  .point .benefit{font-size:.84rem!important;line-height:1.3!important;margin-bottom:0!important;}
+  .feature-icon{width:54px!important;height:54px!important;border-radius:17px!important;margin-bottom:12px!important;}
+  .feature-icon svg{width:30px!important;height:30px!important;}
+
+  .section-head{margin-bottom:24px!important;}
+  .section-head h2{font-size:clamp(2rem,10vw,3rem)!important;margin:10px 0 14px!important;}
+  .section-head p{font-size:.95rem!important;}
+
+  .cards{grid-template-columns:1fr 1fr!important;gap:10px!important;}
+  .card{min-height:205px!important;padding:20px 12px!important;border-radius:18px!important;}
+  .card h3{font-size:1.05rem!important;margin-bottom:7px!important;}
+  .card p{font-size:.82rem!important;line-height:1.4!important;}
+  .icon{width:58px!important;height:58px!important;border-radius:18px!important;margin-bottom:14px!important;}
+  .icon svg{width:34px!important;height:34px!important;}
+
+  .how-top{grid-template-columns:1fr!important;gap:18px!important;}
+  .how-top .how-intro{text-align:center!important;}
+  .how-product img{width:min(46vw,180px)!important;}
+  .benefits-list{grid-template-columns:1fr!important;gap:0!important;margin-top:30px!important;}
+  .benefit-item{grid-template-columns:68px 1fr!important;gap:14px!important;padding-bottom:24px!important;text-align:left!important;}
+  .benefit-item .feature-icon{width:64px!important;height:64px!important;border-radius:19px!important;}
+  .benefit-item h3{font-size:1.05rem!important;margin-bottom:5px!important;}
+  .benefit-item p{font-size:.88rem!important;line-height:1.45!important;}
+
+  #galeria{padding:42px 0!important;}
+  #galeria .container{width:min(100% - 14px,1180px)!important;}
+  #galeria .section-head{margin-bottom:14px!important;}
+  #galeria .gallery-grid{gap:5px!important;margin-top:12px!important;}
+  #galeria .gallery-card,
+  #galeria .gallery-card:nth-child(n){aspect-ratio:1/1!important;border-radius:8px!important;}
+  #galeria .gallery-card:nth-child(1){grid-column:1 / -1!important;aspect-ratio:16/9!important;}
+  #galeria .gallery-card:nth-child(8),
+  #galeria .gallery-card:nth-child(6){aspect-ratio:4/3!important;}
+  #galeria .gallery-card img{border-radius:8px!important;}
+
+  .contact{padding:64px 0!important;}
+  .contact h2{font-size:clamp(2.4rem,12vw,3.5rem)!important;margin-bottom:16px!important;}
+  .contact p{font-size:.95rem!important;margin-bottom:24px!important;}
+  .footer-inner{font-size:.86rem!important;}
+  .float-wa{width:52px!important;height:52px!important;right:14px!important;bottom:14px!important;}
+}
+
+@media (max-width: 390px){
+  .brand span{display:none!important;}
+  .points,.cards{grid-template-columns:1fr!important;}
+  .point,.card{min-height:auto!important;}
+  #galeria .gallery-grid{gap:4px!important;}
 }
 </style>
+
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0"><defs><lineargradient id="featureGradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#19e6e3"></stop><stop offset="52%" stop-color="#1698e5"></stop><stop offset="100%" stop-color="#ef27b9"></stop></lineargradient></defs></svg>
