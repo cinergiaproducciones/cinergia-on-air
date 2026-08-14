@@ -1204,71 +1204,33 @@ transform:translate(-50%,-50%);opacity:0;will-change:left,top}
 </style>
 
 
-<style>
-/* V22 — logo reconocible de WhatsApp dentro del botón verde */
-.whatsapp-logo{
-  width:27px!important;
-  height:27px!important;
-  display:block!important;
-  color:#fff!important;
-}
-</style>
-
-
-<style id="wa-v23-final">
-a[href*="wa.me"],
-a[href*="whatsapp"]{
+<style id="float-wa-v23-corrected">
+.float-wa{
   width:auto !important;
   min-width:210px !important;
-  max-width:none !important;
   height:58px !important;
-  min-height:58px !important;
   padding:0 24px !important;
   border-radius:999px !important;
   display:flex !important;
   align-items:center !important;
   justify-content:center !important;
-  font-size:0 !important;
-  line-height:1 !important;
-  overflow:visible !important;
-}
-a[href*="wa.me"]::before,
-a[href*="wa.me"]::after,
-a[href*="whatsapp"]::before,
-a[href*="whatsapp"]::after{
-  content:none !important;
-  display:none !important;
-}
-a[href*="wa.me"] svg,
-a[href*="wa.me"] i,
-a[href*="whatsapp"] svg,
-a[href*="whatsapp"] i{
-  display:none !important;
-}
-.wa-v23-label{
-  display:block !important;
-  position:static !important;
-  width:auto !important;
-  height:auto !important;
-  margin:0 !important;
-  padding:0 !important;
-  color:#0b0b0b !important;
+  white-space:nowrap !important;
   font-size:16px !important;
   font-weight:800 !important;
   line-height:1 !important;
-  white-space:nowrap !important;
-  opacity:1 !important;
-  visibility:visible !important;
+}
+.float-wa::before,
+.float-wa::after{
+  content:none !important;
+  display:none !important;
 }
 @media(max-width:600px){
-  a[href*="wa.me"],
-  a[href*="whatsapp"]{
+  .float-wa{
     min-width:185px !important;
     height:52px !important;
-    min-height:52px !important;
     padding:0 18px !important;
+    font-size:14px !important;
   }
-  .wa-v23-label{font-size:14px !important;}
 }
 </style>
 
@@ -1276,7 +1238,7 @@ a[href*="whatsapp"] i{
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0"><defs><lineargradient id="featureGradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#19e6e3"></stop><stop offset="52%" stop-color="#1698e5"></stop><stop offset="100%" stop-color="#ef27b9"></stop></lineargradient></defs></svg>
 <nav class="nav"><div class="container nav-inner"><a class="brand" href="#inicio"><img alt="Cinergia" src="assets/logo-cinergia-compacto.png"/><span>ON AIR</span></a><div class="nav-links"><a href="#usos">Usos</a><a href="#galeria">Galería</a>
-<a href="#como-funciona">Cómo funciona</a><a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20cotizar%20un%20evento" rel="noopener" target="_blank"><span class="wa-v23-label">Chatea con nosotros</span></a></div></div></nav>
+<a href="#como-funciona">Cómo funciona</a><a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20cotizar%20un%20evento" rel="noopener" target="_blank">Contacto</a></div></div></nav>
 <main>
 
 <section class="hero hero-v19" id="inicio">
@@ -1361,7 +1323,7 @@ a[href*="whatsapp"] i{
 </section>
 </main>
 <footer><div class="container footer-inner"><div>© 2026 Cinergia On Air</div><div>+54 11 3679-1155 · @cinergia.agency</div></div></footer>
-<a aria-label="WhatsApp" class="float-wa" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air" rel="noopener" target="_blank">W</a>
+<a aria-label="WhatsApp" class="float-wa" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air" rel="noopener" target="_blank">Chatea con nosotros</a>
 <div aria-hidden="true" class="cinergia-cursor">
 <span class="ring r1"></span>
 <span class="ring r2"></span>
