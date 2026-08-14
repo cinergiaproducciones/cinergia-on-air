@@ -976,17 +976,111 @@ transform:translate(-50%,-50%);opacity:0;will-change:left,top}
 
 
 <style>
-/* V19 — Hero */
-.hero .hero-headphones{width:min(430px,68vw)!important;max-height:330px!important;object-fit:contain!important;border-radius:18px!important;filter:drop-shadow(0 22px 52px rgba(0,0,0,.35))!important}
-@media(max-width:640px){.hero .hero-headphones{width:min(310px,82vw)!important;max-height:220px!important}}
+/* V17 — SOLO GALERÍA: fotos casi pegadas, separadas por un hilo negro */
+@media (min-width:901px){
+  #galeria .gallery-grid{
+    gap:1px!important;
+    background:#05060b!important;
+    padding:1px!important;
+    border-radius:16px!important;
+    overflow:hidden!important;
+  }
+  #galeria .gallery-card{
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+    background:#05060b!important;
+  }
+  #galeria .gallery-card img{
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    border-radius:0!important;
+  }
+}
 </style>
+
+
+<style>
+/* V18 — GALERÍA: separación aproximada de 0,5 cm */
+@media (min-width:901px){
+  #galeria .gallery-grid{
+    gap:5mm!important;
+    background:transparent!important;
+    padding:0!important;
+  }
+  #galeria .gallery-card{
+    margin:0!important;
+    border-radius:14px!important;
+    overflow:hidden!important;
+    background:#05060b!important;
+  }
+  #galeria .gallery-card img{
+    width:100%!important;
+    height:100%!important;
+    display:block!important;
+    border-radius:14px!important;
+  }
+}
+</style>
+
+
+<style>
+/* Hero compactado: subtítulos eliminados y tarjetas ajustadas al contenido */
+#onair .hero-feature,
+#onair .feature-card,
+.hero .hero-feature,
+.hero .feature-card,
+.hero-features .feature-card,
+.hero-features .hero-feature{
+  min-height:0!important;
+  height:auto!important;
+}
+#onair .hero-feature,
+#onair .feature-card,
+.hero-features .feature-card,
+.hero-features .hero-feature{
+  padding-top:20px!important;
+  padding-bottom:20px!important;
+}
+</style>
+
+
+<style>
+/* Hero: tarjetas más chicas y ajustadas al contenido */
+#onair .hero-feature,
+#onair .feature-card,
+.hero .hero-feature,
+.hero .feature-card,
+.hero-features .feature-card,
+.hero-features .hero-feature{
+  min-height:0!important;
+  height:auto!important;
+  width:auto!important;
+  padding:14px 16px!important;
+  gap:8px!important;
+}
+#onair .hero-features,
+.hero .hero-features,
+.hero-features{
+  align-items:stretch!important;
+  gap:12px!important;
+}
+#onair .hero-feature h3,
+#onair .feature-card h3,
+.hero-features h3{
+  margin:6px 0 0!important;
+}
+</style>
+
 </head>
 <body>
 <svg aria-hidden="true" focusable="false" height="0" style="position:absolute" width="0"><defs><lineargradient id="featureGradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#19e6e3"></stop><stop offset="52%" stop-color="#1698e5"></stop><stop offset="100%" stop-color="#ef27b9"></stop></lineargradient></defs></svg>
 <nav class="nav"><div class="container nav-inner"><a class="brand" href="#inicio"><img alt="Cinergia" src="assets/logo-cinergia-compacto.png"/><span>ON AIR</span></a><div class="nav-links"><a href="#usos">Usos</a><a href="#como-funciona">Cómo funciona</a><a href="#galeria">Galería</a><a class="btn btn-primary" href="https://wa.me/5491136791155?text=Hola%20Cinergia%20On%20Air%2C%20quiero%20cotizar%20un%20evento" rel="noopener" target="_blank">Contacto</a></div></div></nav>
 <main>
 <section class="hero" id="inicio"><div class="container hero-wrap">
-<img alt="Auriculares Cinergia On Air" class="hero-logo hero-headphones" src="assets/hero-headphones.png"/>
+<img alt="Logo Cinergia" class="hero-logo" src="assets/logo-cinergia-compacto.png"/>
 <div class="onair-big">ON AIR</div>
 <h1 class="tagline">Experiencias que se escuchan.</h1>
 <div class="points">
